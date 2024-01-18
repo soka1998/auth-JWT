@@ -18,3 +18,8 @@ const userSchema = new mongoose.Schema({
       minlength: [6, 'At least enter 6 character'],
     },
   })
+  //fire a function when a new doc saved to DB
+userSchema.post('save', function (doc, next) {
+    console.log('new user was created and saved successfully', doc)
+    next()
+  })
