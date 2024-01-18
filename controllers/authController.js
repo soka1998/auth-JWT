@@ -1,4 +1,6 @@
+const User = require('../Models/User')
 const jwt = require('jsonwebtoken')
+
 
 //handle errors
 const handleErrors = (err) => {
@@ -59,4 +61,9 @@ module.exports.login_post = async (req, res) => {
     const errors = handleErrors(err)
     res.status(400).json({ errors })
   }
+}
+
+module.exports.logout_get=(req,res)=>{
+  res.cookie('jwt','',{maxAge:1})
+  res.redirect('/')
 }
