@@ -7,7 +7,7 @@ dotenv.config()
 
 // Importing express framework
 const express = require('express')
-const routes = require('./routes/Routes.js')
+const routes = require('./routes/authRoutes.js')
 const app = express()
 
 // Loading environment variable for PORT
