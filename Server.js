@@ -22,3 +22,12 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(routes)
 app.use(authRoutes)
+
+
+// Starting the server on the specified PORT
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
+  })
+  
+  app.use(authRoutes)
+  
