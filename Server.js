@@ -16,3 +16,9 @@ const PORT = process.env.PORT
 // Connecting to the database
 require('./Connexion')
 
+
+// Using express.json() middleware to parse JSON request bodies
+app.use(express.json())
+app.use(cookieParser())
+app.use(routes)
+app.use(authRoutes)
