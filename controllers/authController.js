@@ -81,6 +81,6 @@ module.exports.login_post = async (req, res) => {
 module.exports.logout_get = (req, res) => {
   // Clearing the JWT cookie and redirecting to the home page
 
-  res.cookie('jwt', '', { maxAge: 1 })
-  res.redirect('/')
+  res.clearCookie('jwt')
+  res.json('deleted')
 }

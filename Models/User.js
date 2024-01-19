@@ -19,7 +19,9 @@ const userSchema = new mongoose.Schema({
       required: [true, 'please enter a valid email'],
       minlength: [6, 'At least enter 6 character'],
     },
-  })
+  }
+  
+  )
  // Middleware: Run a function after a new doc is saved to DB
 userSchema.post('save', function (doc, next) {
     console.log('new user was created and saved successfully', doc)

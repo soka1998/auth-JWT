@@ -94,9 +94,54 @@ paths:
         '200':
           description: Recipe deleted successfully
 
+  /signup:
+    post:
+      summary: "User signup"
+      tags:
+        - "Authentication"
+      parameters:
+        - in: "body"
+          name: "user"
+          description: "User object for signup"
+          required: true
+          schema:
+            $ref: "#/definitions/UserSignup"
+      responses:
+        200:
+          description: "Successful signup"
+
+  /login:
+    post:
+      summary: "User login"
+      tags:
+        - "Authentication"
+      parameters:
+        - in: "body"
+          name: "credentials"
+          description: "User credentials for login"
+          required: true
+          schema:
+            $ref: "#/definitions/UserLogin"
+      responses:
+        200:
+          description: "Successful login"
+
+  /logout:
+    get:
+      summary: "User logout"
+      tags:
+        - "Authentication"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "Successful logout"
+
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+
+
