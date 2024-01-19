@@ -3,6 +3,8 @@ const { isEmail } = require('validator')
 const bcrypt = require('bcrypt')
 const { error } = require('console')
 
+
+// Define the User schema
 const userSchema = new mongoose.Schema({
     email: {
       type: String,
@@ -18,13 +20,13 @@ const userSchema = new mongoose.Schema({
       minlength: [6, 'At least enter 6 character'],
     },
   })
-  //fire a function when a new doc saved to DB
+ // Middleware: Run a function after a new doc is saved to DB
 userSchema.post('save', function (doc, next) {
     console.log('new user was created and saved successfully', doc)
     next()
   })
 
-  //fire a function BEFORE user is saved to DB
+// Middleware: Run a function before user is saved to DB
 userSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt()
     this.password = await bcrypt.hash(this.password, salt)
@@ -34,6 +36,7 @@ userSchema.pre('save', async function (next) {
 
   //static method to login user
 userSchema.statics.login = async function (email, password) {
+  //Find the user by email
     const user = await this.findOne({ email })
     if (user) {
       const auth = await bcrypt.compare(password, user.password)

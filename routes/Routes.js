@@ -1,7 +1,10 @@
+
+
 const express = require('express')
 const Post = require('../Models/Postmodel.js')
 const { model } = require('mongoose')
 const { requireAuth } = require('../middleware/authMidlleware.js')
+// const { requireAuth } = require('../middleware/authMidlleware.js')
 
 const routes = express.Router()
 routes.get('/recipes', async (req, res) => {

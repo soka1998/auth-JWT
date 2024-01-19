@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Recipes API
+  description: API for managing recipes
+  version: 1.0.0
+
+paths:
+  /recipes:
+    get:
+      summary: Get all recipes
+      responses:
+        '200':
+          description: A list of recipes
+          content:
+            application/json:
+              example:
+                - _id: "1"
+                  title: "Recipe 1"
+                  description: "Description 1"
+                - _id: "2"
+                  title: "Recipe 2"
+                  description: "Description 2"
+        '400':
+          description: Item not found
+    post:
+      summary: Create a new recipe
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Recipe details
+        required: true
+        content:
+          application/json:
+            example:
+              title: "New Recipe"
+              description: "Description of the new recipe"
+      responses:
+        '200':
+          description: Recipe created successfully
+
+  /recipes/{id}:
+    get:
+      summary: Get a specific recipe by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the recipe
+      responses:
+        '200':
+          description: A specific recipe
+          content:
+            application/json:
+              example:
+                _id: "1"
+                title: "Recipe 1"
+                description: "Description 1"
+    put:
+      summary: Update a specific recipe by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the recipe
+      requestBody:
+        description: Updated recipe details
+        required: true
+        content:
+          application/json:
+            example:
+              title: "Updated Recipe"
+              description: "Updated description"
+      responses:
+        '200':
+          description: Recipe updated successfully
+    delete:
+      summary: Delete a specific recipe by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the recipe
+      responses:
+        '200':
+          description: Recipe deleted successfully
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

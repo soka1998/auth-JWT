@@ -21,7 +21,10 @@
     "mongoose": "^8.0.3",
     "node": "^21.2.0",
     "nodemon": "^3.0.2",
-    "validator": "^13.11.0"
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "validator": "^13.11.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "prettier": "^3.2.4"

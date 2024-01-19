@@ -1,10 +1,13 @@
 const jwt = require('jsonwebtoken')
 
+// Middleware to require authentication
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt
 
   //check json web token exists and is verified
   if (token) {
+     // Redirect to login if the token is present but not verified
+
     res.redirect('/login')
     jwt.verify(token, SECRET - KEY, (err, decodedToken) => {
       if (err) {
@@ -21,7 +24,7 @@ const requireAuth = (req, res, next) => {
   
 }
   // Check current user 
-  const checkUser =(req,res,next)
+  const checkUser =(req,res,next)=>{
   const token = req.cookies.jwt;
 
   if(token){
@@ -43,7 +46,7 @@ const requireAuth = (req, res, next) => {
    next()
 
   }
-
+  }
 
 
 module.exports = { requireAuth ,checkUser}
