@@ -20,7 +20,7 @@ const requireAuth = (req, res, next) => {
   }
   
 }
-  // Check current user
+  // Check current user 
   const checkUser =(req,res,next)
   const token = req.cookies.jwt;
 
